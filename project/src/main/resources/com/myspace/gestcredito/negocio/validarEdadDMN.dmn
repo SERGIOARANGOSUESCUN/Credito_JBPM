@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_DE70FD1E-86BF-424B-9F4B-A9B4E8D3038B" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_0DFE1379-6E4F-4AAA-8317-533E69A4F413" name="validarEdadDMN" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_DE70FD1E-86BF-424B-9F4B-A9B4E8D3038B">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_CD5A8120-B6EB-456E-AC31-2B04D795874E" name="edad">
+    <dmn:variable id="_DB4E1A3C-B603-4A68-9525-E894AF3467BA" name="edad"/>
+  </dmn:inputData>
+  <dmn:decision id="_56867B87-177E-44A7-8F47-EB48676B8183" name="validarEdad">
+    <dmn:variable id="_46BF2683-81CB-4D99-BB0E-0B497AD99B67" name="validarEdad" typeRef="string"/>
+    <dmn:informationRequirement id="_B24FFAEC-163A-4518-8CBD-74239CD97CEA">
+      <dmn:requiredInput href="#_CD5A8120-B6EB-456E-AC31-2B04D795874E"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_F54E149A-08EE-4DE5-9C42-782A74B7B1F4" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_F719C517-ED28-420E-8216-0E2B710CE2F1">
+        <dmn:inputExpression id="_09AF9E4A-08BC-4044-848B-2C4D72B0BBDA" typeRef="number">
+          <dmn:text>edad</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_97F75173-2EE5-42B1-B0C0-0240FD32644B" typeRef="string"/>
+      <dmn:rule id="_0640D80F-F38D-42FA-92F1-26BFC63D41CB">
+        <dmn:inputEntry id="_C346ABB2-0F09-4433-A48B-F87BFB86CAE0">
+          <dmn:text>&lt; 18</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1A37D0CF-034E-4D27-9CD6-EA5E8ECABDC5">
+          <dmn:text>"edad invalida"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_76D73D7B-AD22-42F7-AC2A-48B226B284CE">
+        <dmn:inputEntry id="_40242F57-77A2-463A-9DFB-B61BF49BDD63">
+          <dmn:text>&gt;= 18</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5DFC4D55-0C3E-42BE-AF2F-1F442229A98B">
+          <dmn:text>"credito aprobado"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_F54E149A-08EE-4DE5-9C42-782A74B7B1F4">
+            <kie:width>50.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_CD5A8120-B6EB-456E-AC31-2B04D795874E" dmnElementRef="_CD5A8120-B6EB-456E-AC31-2B04D795874E" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="392" y="10" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_56867B87-177E-44A7-8F47-EB48676B8183" dmnElementRef="_56867B87-177E-44A7-8F47-EB48676B8183" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="392" y="208" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_B24FFAEC-163A-4518-8CBD-74239CD97CEA" dmnElementRef="_B24FFAEC-163A-4518-8CBD-74239CD97CEA">
+        <di:waypoint x="442" y="60"/>
+        <di:waypoint x="442" y="208"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>

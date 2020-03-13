@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_585A1926-B371-41F2-A2A1-3317B477B9B5" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_A0462914-C5D1-4CE2-BE8C-15BDF2B070B8" name="validarCreditoDMN" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_585A1926-B371-41F2-A2A1-3317B477B9B5">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_DAD80FF3-485A-41EB-9840-C9992B75769A" name="valorCredito">
+    <dmn:variable id="_179117C7-B31A-43DE-8E4C-BEA3D72F4F32" name="valorCredito"/>
+  </dmn:inputData>
+  <dmn:inputData id="_6B04006C-337A-4BAE-B4E0-308223FC9971" name="totalEndeudamiento">
+    <dmn:variable id="_8634B54E-5750-432F-8EA7-AE014235553B" name="totalEndeudamiento"/>
+  </dmn:inputData>
+  <dmn:decision id="_6D6CE91D-4BB3-4B46-82C9-C54B630A4F29" name="validar">
+    <dmn:variable id="_C3CC0885-0C32-476A-B41C-1F54A7942C5E" name="validar" typeRef="string"/>
+    <dmn:informationRequirement id="_11FF8ECC-8106-4EFB-8BE8-5104D9475C53">
+      <dmn:requiredInput href="#_DAD80FF3-485A-41EB-9840-C9992B75769A"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_64D60887-A684-406B-B60F-719AA8054D70">
+      <dmn:requiredInput href="#_6B04006C-337A-4BAE-B4E0-308223FC9971"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_FC83C438-9709-4F5B-979F-71AA51A7EE44" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_74B4BC06-23E8-48ED-A20C-DD499B4998CB">
+        <dmn:inputExpression id="_54103AB1-DA2B-4C0B-A81E-AB5FB2C94978" typeRef="number">
+          <dmn:text>valorCredito</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_58550556-95E9-415F-9383-3D1B0C11B134" typeRef="string"/>
+      <dmn:rule id="_1A011C88-0727-4F1F-B53C-13493992BA6C">
+        <dmn:inputEntry id="_C4D5C31B-9683-437D-865C-207B3EE95647">
+          <dmn:text>&gt; 10000000</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_32E7A1E6-3446-441F-B2BC-9171C5CE6ACC">
+          <dmn:text>"Monto excedido"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_553B0F77-8EDD-4978-ACF8-EAD4E64A4D54">
+        <dmn:inputEntry id="_645F053D-AF38-40B7-8B31-C7A502828B03">
+          <dmn:text>&gt; totalEndeudamiento</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_FAE22CA7-4E99-4A03-80BA-9C9EC8FA5C4A">
+          <dmn:text>"Capital sin Amortizar"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+      <dmn:rule id="_BF89940C-F064-4F22-B433-194698570A4E">
+        <dmn:inputEntry id="_89CC5A64-EEE1-4D47-B864-8B227EB4A252">
+          <dmn:text>&lt; totalEndeudamiento</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E539D2ED-4E5E-4170-A0C4-697FA002EC8F">
+          <dmn:text>"Credito Aprobado"</dmn:text>
+        </dmn:outputEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_FC83C438-9709-4F5B-979F-71AA51A7EE44">
+            <kie:width>50.0</kie:width>
+            <kie:width>270.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_DAD80FF3-485A-41EB-9840-C9992B75769A" dmnElementRef="_DAD80FF3-485A-41EB-9840-C9992B75769A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="144" y="17" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6D6CE91D-4BB3-4B46-82C9-C54B630A4F29" dmnElementRef="_6D6CE91D-4BB3-4B46-82C9-C54B630A4F29" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="220" y="217" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6B04006C-337A-4BAE-B4E0-308223FC9971" dmnElementRef="_6B04006C-337A-4BAE-B4E0-308223FC9971" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="295" y="17" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_11FF8ECC-8106-4EFB-8BE8-5104D9475C53" dmnElementRef="_11FF8ECC-8106-4EFB-8BE8-5104D9475C53">
+        <di:waypoint x="194" y="67"/>
+        <di:waypoint x="270" y="217"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_64D60887-A684-406B-B60F-719AA8054D70" dmnElementRef="_64D60887-A684-406B-B60F-719AA8054D70">
+        <di:waypoint x="345" y="67"/>
+        <di:waypoint x="270" y="217"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
